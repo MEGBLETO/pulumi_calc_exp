@@ -25,7 +25,15 @@ jobs:
           cd ..
 
       - name: Run tests
-        run: npm test
+        run: |
+          cd app
+          npm test
+
+      - name: Build app
+        run: |
+          cd app
+          npm run build
+          cd ..
 
       - name: Set up Pulumi
         uses: pulumi/actions@v4
@@ -46,7 +54,3 @@ jobs:
 
       - name: Run Pulumi up
         run: pulumi up --yes
-
-
-
-
