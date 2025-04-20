@@ -3,7 +3,7 @@ name: Deploy Lambda with Pulumi
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
   deploy:
@@ -46,6 +46,7 @@ jobs:
 
       - name: Run Pulumi up
         run: pulumi up --yes
+
 
 
 
