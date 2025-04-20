@@ -1,0 +1,22 @@
+service: calculator-api
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-west-3
+
+functions:
+  app:
+    handler: dist/index.handler
+    events:
+      - http:
+          path: /{proxy+}
+          method: any
+
+plugins:
+  - serverless-offline
+
+package:
+  patterns:
+    - dist/**
+    - node_modules/**
