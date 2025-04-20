@@ -1,0 +1,10 @@
+name: nelzer_test
+description: A minimal AWS TypeScript Pulumi program to deploy a calculator app using aws lambda
+runtime:
+  name: nodejs
+  options:
+    packagemanager: npm
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-typescript
