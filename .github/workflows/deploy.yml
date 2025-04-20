@@ -32,7 +32,6 @@ jobs:
         run: |
           cd app
           npm run build
-          cd ..
 
       - name: Set up Pulumi
         uses: pulumi/actions@v4
@@ -42,7 +41,9 @@ jobs:
       - name: Login to Pulumi
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-        run: pulumi login
+        run: |
+          cd app
+          pulumi login
 
       - name: Set AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
@@ -52,7 +53,11 @@ jobs:
           aws-region: eu-west-3
 
       - name: Select Pulumi stack
-        run: pulumi stack select nelzer_test/dev
+        run: |
+          cd app
+          pulumi stack select nelzer_test/dev
 
       - name: Run Pulumi up
-        run: pulumi up --yes
+        run: |
+          cd app
+          pulumi up --yes
