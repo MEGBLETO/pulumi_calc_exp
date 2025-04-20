@@ -32,6 +32,8 @@ jobs:
         run: |
           cd app
           npm run build
+          cp -r node_modules dist/
+          cd ..
 
       - name: Set up Pulumi
         uses: pulumi/actions@v4
